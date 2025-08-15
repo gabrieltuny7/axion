@@ -1,0 +1,92 @@
+.contact-wrap{
+  padding: 64px 0;
+  border-bottom: 1px solid rgba(122,228,255,.08);
+  background:
+    radial-gradient(900px 420px at 0% 0%, rgba(122,228,255,.07), transparent 60%),
+    radial-gradient(700px 360px at 100% 100%, rgba(0,209,255,.06), transparent 60%);
+}
+
+/* Cabeçalho */
+.head{ text-align:center; max-width: 900px; margin: 0 auto 22px; padding: 0 10px; }
+.chip{
+  display:inline-block; font-size:12px; letter-spacing:.6px;
+  padding:6px 10px; border-radius:999px;
+  background: rgba(122,228,255,.12); border:1px solid rgba(122,228,255,.25);
+}
+.title{ font-size: clamp(24px, 4.4vw, 34px); margin: 10px 0 6px; }
+.subtitle{ color: var(--ax-muted); }
+
+/* Layout 2 colunas */
+.content{
+  display: grid; gap: 18px;
+  grid-template-columns: .9fr 1.1fr;
+}
+@media (max-width: 980px){ .content{ grid-template-columns: 1fr; } }
+
+/* Cartões de contato (lado A) */
+.contact-info{ display:grid; gap:12px; align-content:start; }
+.card{
+  display:flex; gap:12px; align-items:center;
+  padding: 14px; border-radius: 14px;
+  background: linear-gradient(180deg, rgba(10,15,26,.6), rgba(15,23,38,.7));
+  border: 1px solid rgba(122,228,255,.22);
+  box-shadow: 0 0 24px rgba(0,209,255,.06);
+}
+.card .icon{
+  width:38px; height:38px; display:grid; place-items:center;
+  color: var(--ax-primary);
+  background: rgba(122,228,255,.12);
+  border: 1px solid rgba(122,228,255,.25);
+  border-radius: 10px;
+}
+.card h3{ margin:0 0 2px; font-size:16px; }
+.card p{ margin:0; color: var(--ax-text); }
+.note{ color: var(--ax-muted); margin-top: 6px; }
+
+/* Formulário (lado B) */
+.form-area{
+  padding: 14px; border-radius: 14px;
+  border: 1px solid rgba(122,228,255,.22);
+  background: linear-gradient(180deg, rgba(10,15,26,.6), rgba(15,23,38,.7));
+  box-shadow: 0 0 24px rgba(0,209,255,.06);
+}
+
+.row{ display:grid; gap:12px; margin-bottom: 10px; }
+.row.two{ grid-template-columns: 1fr 1fr; }
+@media (max-width: 680px){ .row.two{ grid-template-columns: 1fr; } }
+
+.field label{
+  display:block; margin: 0 0 6px; font-weight:600; letter-spacing:.3px;
+}
+.field input, .field select, .field textarea{
+  width:100%; padding:12px; border-radius:12px;
+  background: rgba(10,15,26,.6); color: var(--ax-text);
+  border: 1px solid rgba(122,228,255,.25);
+  outline: none; transition: border-color .2s ease, box-shadow .2s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  border-color: rgba(122,228,255,.45);
+  box-shadow: 0 0 0 3px rgba(0,209,255,.15);
+}
+/* estado inválido */
+.invalid{
+  border-color: #ff7a7a !important;
+  box-shadow: 0 0 0 3px rgba(255, 122, 122, .18) !important;
+}
+.error{ color: #ffb3b3; margin-top: 4px; display:block; }
+
+/* ações */
+.actions{ display:flex; gap:12px; align-items:center; }
+.btn{
+  display:inline-block; padding:12px 18px; border-radius:12px; font-weight:600;
+  border:1px solid rgba(122,228,255,.35);
+}
+.btn-primary{
+  background: linear-gradient(90deg, var(--ax-primary), var(--ax-accent));
+  color:#06131a; box-shadow: 0 10px 24px rgba(0,209,255,.18);
+}
+.btn-primary[disabled]{ opacity:.6; cursor:not-allowed; }
+.btn-ghost{ background: transparent; color: var(--ax-text); }
+.btn-ghost:hover{ box-shadow: 0 0 18px rgba(0,209,255,.18); }
+
+.success{ margin-top:10px; color: #8fffd6; }

@@ -1,1 +1,120 @@
-<p>contato works!</p>
+<div class="contact-wrap">
+  <div class="container">
+
+    <!-- Cabeçalho -->
+    <div class="head">
+      <span class="chip">Fale com a Axion</span>
+      <h2 class="title">Entre em Contato</h2>
+      <p class="subtitle">
+        Conte um pouco sobre seu projeto. Responderemos com a melhor solução em
+        <strong>automação</strong>, <strong>sites</strong> e <strong>suporte técnico</strong>.
+      </p>
+    </div>
+
+    <!-- Conteúdo em 2 colunas -->
+    <div class="content">
+      <!-- Lado A: informações de contato -->
+      <aside class="contact-info">
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="M3 7l9 6 9-6"></path>
+            </svg>
+          </div>
+          <div>
+            <h3>E-mail</h3>
+            <p>contato#64axion.com.br</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 8.81 19.79 19.79 0 0 1 .08 0.18 2 2 0 0 1 2.05 0h3a2 2 0 0 1 2 1.72 12.76 12.76 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L6.16 8.09a16 16 0 0 0 6.75 6.75l1.45-1.14a2 2 0 0 1 2.11-.45 12.76 12.76 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Telefone</h3>
+            <p>(00) 0000-0000</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">🕘</div>
+          <div>
+            <h3>Horário</h3>
+            <p>Seg a Sex, 9h–18h</p>
+          </div>
+        </div>
+
+        <p class="note">Preferir WhatsApp? Inclua no campo “Mensagem” que retornamos por lá.</p>
+      </aside>
+
+      <!-- Lado B: formulário -->
+      <section class="form-area">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+
+          <div class="row two">
+            <div class="field">
+              <label for="name">Nome*</label>
+              <input id="name" name="name" [(ngModel)]="model.name" required minlength="3" #name="ngModel"
+                     [class.invalid]="name.invalid && name.touched" placeholder="Seu nome completo">
+              <small class="error" *ngIf="name.invalid && name.touched">
+                Informe seu nome (mín. 3 caracteres).
+              </small>
+            </div>
+
+            <div class="field">
+              <label for="email">E-mail*</label>
+              <input id="email" name="email" [(ngModel)]="model.email" required email #email="ngModel"
+                     [class.invalid]="email.invalid && email.touched" placeholder="voce@empresa.com.br">
+              <small class="error" *ngIf="email.invalid && email.touched">
+                Informe um e-mail válido.
+              </small>
+            </div>
+          </div>
+
+          <div class="row two">
+            <div class="field">
+              <label for="phone">Telefone (opcional)</label>
+              <input id="phone" name="phone" [(ngModel)]="model.phone" placeholder="(00) 00000-0000">
+            </div>
+
+            <div class="field">
+              <label for="subject">Assunto</label>
+              <select id="subject" name="subject" [(ngModel)]="model.subject">
+                <option>Orçamento</option>
+                <option>Suporte</option>
+                <option>Projeto de automação</option>
+                <option>Desenvolvimento de site</option>
+                <option>Outro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="message">Mensagem*</label>
+              <textarea id="message" name="message" rows="6" required minlength="10" #message="ngModel"
+                        [(ngModel)]="model.message" [class.invalid]="message.invalid && message.touched"
+                        placeholder="Descreva sua necessidade, prazos e contexto."></textarea>
+              <small class="error" *ngIf="message.invalid && message.touched">
+                Conte mais detalhes (mín. 10 caracteres).
+              </small>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-primary" [disabled]="sending">
+              {{ sending ? 'Enviando...' : 'Enviar mensagem' }}
+            </button>
+            <button type="button" class="btn btn-ghost" (click)="resetForm()" [disabled]="sending">Limpar</button>
+          </div>
+
+          <p class="success" *ngIf="sent">✅ Mensagem enviada! Em breve retornaremos.</p>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>

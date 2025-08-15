@@ -1,0 +1,19 @@
+/* espaço entre as seções + linha divisória sutil (inspirado no padrão corporativo) */
+.home .sec{
+  padding: 72px 0;
+  border-bottom: 1px solid rgba(122,228,255,.08);
+}
+
+/* alterna leve realce de fundo entre seções para hierarquia visual */
+.home .sec:nth-child(odd){
+  background:
+    radial-gradient(900px 420px at 0% 0%, rgba(122,228,255,.05), transparent 60%),
+    radial-gradient(700px 360px at 100% 100%, rgba(0,209,255,.05), transparent 60%);
+}
+
+/* garante boa ancoragem com navbar fixa (caso não tenha adicionado nos globais) */
+.home .sec{ scroll-margin-top: 84px; }
+
+/* ajustes finos por seção (caso queira diferenciar sutilmente) */
+.sec-inicio{ padding-top: 86px; } /* um pouco mais de respiro abaixo da navbar */
+.sec-contato{ border-bottom: none; } /* última seção sem linha */

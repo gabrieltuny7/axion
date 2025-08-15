@@ -1,1 +1,27 @@
-<p>navbar works!</p>
+<header class="bar" [class.compact]="scrolled">
+  <div class="brand">
+    <a [routerLink]="['/']" fragment="inicio" class="logo" (click)="closeMenu()">
+      <img src="assets/axion-logo.png" alt="Axion Systems">
+      <span class="brand-text">AXION <small>Systems</small></span>
+    </a>
+  </div>
+
+  <button class="hamb" (click)="menuOpen = !menuOpen" aria-label="Abrir menu">☰</button>
+
+  <nav class="menu" [class.open]="menuOpen">
+    <a [routerLink]="['/']" fragment="inicio" (click)="closeMenu()"
+       [class.active]="activeSection==='inicio'">INÍCIO</a>
+
+    <a [routerLink]="['/']" fragment="servicos" (click)="closeMenu()"
+       [class.active]="activeSection==='servicos'">SERVIÇOS</a>
+
+    <a [routerLink]="['/']" fragment="equipe" (click)="closeMenu()"
+       [class.active]="activeSection==='equipe'">EQUIPE</a>
+
+    <a [routerLink]="['/']" fragment="lista-servicos" (click)="closeMenu()"
+       [class.active]="activeSection==='lista-servicos'">LISTA DE SERVIÇOS</a>
+
+    <a [routerLink]="['/']" fragment="contato" (click)="closeMenu()"
+       [class.active]="activeSection==='contato'">ENTRE EM CONTATO</a>
+  </nav>
+</header>
