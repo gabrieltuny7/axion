@@ -1,28 +1,51 @@
 <header class="bar" [class.compact]="scrolled">
+  <!-- BRAND (ESQUERDA) -->
   <div class="brand">
-    <a [routerLink]="['/']" fragment="inicio" class="logo" (click)="closeMenu()">
-      <img src="assets/AxionLogoA.png" alt="Axion Systems">
-      <!-- <span class="brand-text">AXION <small>Systems</small></span> -->
-       <img src="assets/AxionLogoNome.png" alt="Axion Systems">
-    </a>
+    <img src="assets/AxionLogoA.png" alt="Axion logo">
+    <img src="assets/AxionLogoNome.png" alt="Axion Systems">
   </div>
 
+  <!-- BOTÃO MOBILE -->
   <button class="hamb" (click)="menuOpen = !menuOpen" aria-label="Abrir menu">☰</button>
 
+  <!-- MENU (DIREITA) -->
   <nav class="menu" [class.open]="menuOpen">
-    <a [routerLink]="['/']" fragment="inicio" (click)="closeMenu()"
-       [class.active]="activeSection==='inicio'">INÍCIO</a>
+    <div class="nav-selects">
+      <!-- INÍCIO (select com as seções atuais) -->
+      <label class="sr-only" for="sel-inicio">Início</label>
+      <select id="sel-inicio"
+              class="nav-select tight-next"
+              (change)="onSelectNavigate($event)">
+        <option value="" selected hidden>Início</option>
+        <option value="inicio">Início</option>
+        <option value="servicos">Serviços</option>
+        <option value="equipe">Equipe</option>
+        <option value="lista-servicos">Lista de Serviços</option>
+        <option value="contato">Entre em Contato</option>
+      </select>
 
-    <a [routerLink]="['/']" fragment="servicos" (click)="closeMenu()"
-       [class.active]="activeSection==='servicos'">SERVIÇOS</a>
+      <!-- Portifólio de Serviços -->
+      <select class="nav-select"
+              (change)="onComingSoon()"
+              aria-label="Portifólio de Serviços">
+        <option value="" selected>Portifólio de Serviços</option>
+        <option value="soon" disabled>Disponível em breve</option>
+      </select>
 
-    <a [routerLink]="['/']" fragment="equipe" (click)="closeMenu()"
-       [class.active]="activeSection==='equipe'">EQUIPE</a>
+      <!-- Ebooks -->
+      <select class="nav-select tight-next"
+              (change)="onComingSoon()"
+              aria-label="Ebooks">
+        <option value="" selected>Ebooks</option>
+        <option value="soon" disabled>Disponível em breve</option>
+      </select>
 
-    <a [routerLink]="['/']" fragment="lista-servicos" (click)="closeMenu()"
-       [class.active]="activeSection==='lista-servicos'">LISTA DE SERVIÇOS</a>
-
-    <a [routerLink]="['/']" fragment="contato" (click)="closeMenu()"
-       [class.active]="activeSection==='contato'">ENTRE EM CONTATO</a>
+      <!-- Carrinho -->
+      <button
+        class="icon-btn"
+        (click)="onComingSoonClick()"
+        aria-label="Carrinho"
+        title="Disponível em breve">🛒</button>
+    </div>
   </nav>
 </header>
