@@ -1,28 +1,64 @@
 <header class="bar" [class.compact]="scrolled">
+  <!-- BRAND (ESQUERDA) -->
   <div class="brand">
-    <a [routerLink]="['/']" fragment="inicio" class="logo" (click)="closeMenu()">
-      <img src="assets/AxionLogoA.png" alt="Axion Systems">
-      <!-- <span class="brand-text">AXION <small>Systems</small></span> -->
-       <img src="assets/AxionLogoNome.png" alt="Axion Systems">
-    </a>
+    <img src="assets/AxionLogoA.png" alt="Axion logo">
+    <img src="assets/AxionLogoNome.png" alt="Axion Systems">
   </div>
 
-  <button class="hamb" (click)="menuOpen = !menuOpen" aria-label="Abrir menu">☰</button>
+  <!-- BOTÃO MOBILE -->
+  <button
+  class="hamb"
+  type="button"
+  (click)="menuOpen = !menuOpen"
+  [attr.aria-expanded]="menuOpen"
+  aria-label="Abrir menu">☰
+  </button>
 
-  <nav class="menu" [class.open]="menuOpen">
-    <a [routerLink]="['/']" fragment="inicio" (click)="closeMenu()"
-       [class.active]="activeSection==='inicio'">INÍCIO</a>
 
-    <a [routerLink]="['/']" fragment="servicos" (click)="closeMenu()"
-       [class.active]="activeSection==='servicos'">SERVIÇOS</a>
+  <!-- MENU (DIREITA) -->
+  <nav class="menu" [class.open]="menuOpen" [style.display]="menuOpen ? 'flex' : null">
+    <div class="nav-selects">
+      <!-- INÍCIO (select com as seções atuais) -->
+      <label class="sr-only" for="sel-inicio"></label>
+      <select id="sel-inicio"
+              class="nav-select tight-next"
+              (change)="onSelectNavigate($event)">
+        <option value="" selected hidden>Início</option>
+        <option value="inicio">Início</option>
+        <option value="servicos">Serviços</option>
+        <option value="equipe">Equipe</option>
+        <option value="lista-servicos">Lista de Serviços</option>
+        <option value="contato">Entre em Contato</option>
+      </select>
 
-    <a [routerLink]="['/']" fragment="equipe" (click)="closeMenu()"
-       [class.active]="activeSection==='equipe'">EQUIPE</a>
+      <!-- Portifólio de Serviços -->
+      <select class="nav-select"
+              (change)="onComingSoon()"
+              aria-label="Portifólio de Serviços">
+        <option value="" selected>Portifólio de Serviços</option>
+        <option value="soon" disabled>Disponível em breve</option>
+      </select>
 
-    <a [routerLink]="['/']" fragment="lista-servicos" (click)="closeMenu()"
-       [class.active]="activeSection==='lista-servicos'">LISTA DE SERVIÇOS</a>
+      <!-- Ebooks -->
+      <select class="nav-select tight-next"
+              (change)="onComingSoon()"
+              aria-label="Ebooks">
+        <option value="" selected>Ebooks</option>
+        <option value="soon" disabled>Disponível em breve</option>
+      </select>
 
-    <a [routerLink]="['/']" fragment="contato" (click)="closeMenu()"
-       [class.active]="activeSection==='contato'">ENTRE EM CONTATO</a>
+      <!-- Carrinho -->
+       <!-- (click)="onComingSoonClick()" -->
+      <button
+        class="icon-btn"          
+        aria-label="Carrinho"
+        title="Disponível em breve">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+        </svg>
+      </button>
+
+
+    </div>
   </nav>
 </header>

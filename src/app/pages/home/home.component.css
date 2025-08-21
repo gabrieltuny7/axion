@@ -15,5 +15,10 @@
 .home .sec{ scroll-margin-top: 84px; }
 
 /* ajustes finos por seção (caso queira diferenciar sutilmente) */
-.sec-inicio{ padding-top: 86px; } /* um pouco mais de respiro abaixo da navbar */
+.sec-inicio{ padding-top: 0; }
 .sec-contato{ border-bottom: none; } /* última seção sem linha */
+
+/* === FIX: reduzir espaço entre navbar e seção Início === */
+.home .sec.sec-inicio{
+  padding-top: 20px !important;
+}

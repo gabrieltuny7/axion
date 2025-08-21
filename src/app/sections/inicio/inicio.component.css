@@ -1,12 +1,13 @@
 /* área/section do hero */
 .hero-wrap{
   position: relative;
-  padding: 86px 0 56px; /* compensa navbar e cria respiro */
+  padding: 0 0 48px; /* reduzido: quase zero no topo, leve respiro no fundo */
   overflow: hidden;
   background: radial-gradient(1200px 600px at -10% -10%, rgba(122,228,255,.10), transparent 60%),
               radial-gradient(900px 500px at 110% 10%, rgba(0,209,255,.07), transparent 60%);
   border-bottom: 1px solid rgba(122,228,255,.08);
 }
+
 
 /* grid principal: texto + visual */
 .hero{
@@ -115,3 +116,13 @@
 .ring-2{ width: 70%; height: 70%; animation-duration: 12s; animation-direction: reverse; }
 
 @keyframes spin{ to { transform: rotate(360deg); } }
+
+/* === FIX: topo do herói “quase zero” e sem colapso de margem === */
+.hero-wrap{
+  padding-top: 0 !important;   /* mantém só o respiro inferior já existente */
+}
+
+/* evita que a margem do primeiro filho empurre a seção para baixo */
+.hero-wrap > *:first-child{
+  margin-top: 0 !important;
+}
